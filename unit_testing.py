@@ -10,7 +10,12 @@ from pages.flight_page import FlightPage
 class UnitTesting(unittest.TestCase):
 
     def setUp(self):
-        self.driver = webdriver.Chrome('drivers/chromedriver')
+        # Selenium support for PhantomJS has been deprecated, please use headless
+        # self.driver = webdriver.PhantomJS('drivers/phantomjs')
+
+        options = webdriver.ChromeOptions()
+        options.add_argument('headless')
+        self.driver = webdriver.Chrome('drivers/chromedriver', options=options)
         self.driver.get('http://newtours.demoaut.com/')
         self.page_index = PageIndex(driver=self.driver)
         self.flight_page = FlightPage(driver=self.driver)
