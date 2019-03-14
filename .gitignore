@@ -2,3 +2,4 @@
 screenshots/
 venv/
 reports/
+__pycache__/
